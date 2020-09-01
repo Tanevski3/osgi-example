@@ -23,6 +23,7 @@ This section will describe requirements needed to satisfy the installation or ru
  - Start Apache Karaf
  - In Apache karaf console run `install mvn:com.mtanevski.osgi/osgi-service-example/1.0.0-SNAPSHOT`
  - then run `install mvn:com.mtanevski.osgi/osgi-client-example/1.0.0-SNAPSHOT`
+ - or run `install mvn:com.mtanevski.osgi/osgi-activator-example/1.0.0-SNAPSHOT`
  
 ## Contact
 

@@ -17,14 +17,14 @@ public class Client implements BundleActivator, ServiceListener {
         this.ctx = bundleContext;
         try {
             this.ctx.addServiceListener(
-                    this, "(class=" + Greeter.class.getName() + ")");
+                    this, "(objectclass=" + Greeter.class.getName() + ")");
         } catch (InvalidSyntaxException e) {
             e.printStackTrace();
         }
     }
 
     public void stop(BundleContext bundleContext) {
-        if(serviceReference != null) {
+        if (serviceReference != null) {
             this.ctx.ungetService(serviceReference);
         }
         this.ctx = null;
@@ -32,15 +32,15 @@ public class Client implements BundleActivator, ServiceListener {
 
     public void serviceChanged(ServiceEvent serviceEvent) {
         int type = serviceEvent.getType();
-        switch (type){
-            case(ServiceEvent.REGISTERED):
+        switch (type) {
+            case (ServiceEvent.REGISTERED):
                 System.out.println("Notification of service registered.");
                 serviceReference = serviceEvent
                         .getServiceReference();
-                Greeter service = (Greeter)(ctx.getService(serviceReference));
-                System.out.println( service.sayHiTo("John") );
+                Greeter service = (Greeter) (ctx.getService(serviceReference));
+                System.out.println(service.sayHiTo("John"));
                 break;
-            case(ServiceEvent.UNREGISTERING):
+            case (ServiceEvent.UNREGISTERING):
                 System.out.println("Notification of service unregistered.");
                 this.ctx.ungetService(serviceEvent.getServiceReference());
                 break;
